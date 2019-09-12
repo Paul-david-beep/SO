@@ -1,0 +1,10 @@
+from time import sleep
+import RPi.GPIO as GPIO
+import os
+GPIO.setmode(GPIO.BOARD)
+button1=16
+GPIO.setup(button1,GPIO.IN,pull_up_down=GPIO.PUD_UP)
+while(1):
+        if GPIO.input(button1)==0:
+                os.system("curl http://192.168.1.11/dash.php")
+                sleep(1)
